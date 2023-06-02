@@ -20,15 +20,15 @@ public class CountingWordsWithaGivenPrefix {
 //
 //        System.out.println(count);
 //        return count;
-//
+
         int prefLength = pref.length();
         int count = 0;
         for (int i = 0; i < words.length; i++) {
             if (words[i].length() < prefLength) {
                 continue;
             }
-            String wordsClone = words[i].substring(0,prefLength);
-            if(wordsClone.equals(pref)){
+            String wordsClone = words[i].substring(0, prefLength);
+            if (wordsClone.equals(pref)) {
                 count++;
             }
         }
@@ -36,13 +36,16 @@ public class CountingWordsWithaGivenPrefix {
         System.out.println(count);
         return count;
 
+        
+
+//        int c = 0;
+//        for (String s : words) {
+//            if (s.startsWith(pref))
+//                c++;
+//        }
+//        return c;
+
+
+
     }
-
-//  Best solution    int c = 0;
-//    for(String s : words) {
-//        if(s.indexOf(pref)==0)
-//            c++;
-//    }
-//    return c;
-
 }
