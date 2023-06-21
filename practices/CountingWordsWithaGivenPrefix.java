@@ -1,8 +1,12 @@
 package practices;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class CountingWordsWithaGivenPrefix {
 
-    public int prefixCount(String[] words, String pref) {
+    public List<String> prefixCount(String[] words, String pref) {
 //        int prefLength = pref.length();
 //        int count = 0;
 //        for (int i = 0; i < words.length; i++){
@@ -22,19 +26,24 @@ public class CountingWordsWithaGivenPrefix {
 //        return count;
 
         int prefLength = pref.length();
-        int count = 0;
-        for (int i = 0; i < words.length; i++) {
-            if (words[i].length() < prefLength) {
-                continue;
-            }
-            String wordsClone = words[i].substring(0, prefLength);
-            if (wordsClone.equals(pref)) {
-                count++;
-            }
-        }
+//         count = 0;
+//
+//        for (int i = 0; i < words.length; i++) {
+//            if (words[i].length() < prefLength) {
+//                continue;
+//            }
+//            String wordsClone = words[i].substring(0, prefLength);
+//            if (wordsClone.equals(pref)) {
+//                count++;
+//            }
+//        }
+        List<String> result = new ArrayList<>();
+     Arrays.stream(words).filter(item -> isInterested(pref, prefLength, item)).forEach(result::add);
 
-        System.out.println(count);
-        return count;
+        return result;
+
+//        System.out.println(count);
+//        return count;
 
         
 
@@ -47,5 +56,10 @@ public class CountingWordsWithaGivenPrefix {
 
 
 
+
+    }
+
+    private static boolean isInterested(String pref, int prefLength, String item) {
+        return item.length() >= prefLength && item.substring(0, prefLength).equals(pref);
     }
 }
